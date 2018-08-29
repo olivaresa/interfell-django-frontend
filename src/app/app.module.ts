@@ -8,6 +8,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginService } from './login/login.service';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
+import { App } from './app.users/app.users.component';
+import { UsersComponent } from './users/users.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -18,7 +20,9 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    App.UsersComponent,
+    UsersComponent
   ],
   imports: [
     BrowserModule,
