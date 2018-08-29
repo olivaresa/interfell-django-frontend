@@ -7,24 +7,15 @@ import { Observable, throwError } from 'rxjs';
 })
 export class LoginService {
 
-  private api_url: string = 'http://localhost:8000';
-  public is_login: boolean = false;
-  private token: string;
+  api_url: string = 'http://localhost:8000';
+  is_login: boolean = false;
+  token: string;
 
 
   constructor(private http: HttpClient) {
 
   }
 
-  private getHttpOptions() {
-    return {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Authorization': 'JWT ' + this.token
-      })
-    };
-  }
-  
   getAuth(username, password) {
     return new Observable((observer) => {
       this.http.post(this.api_url + '/api-token-auth/', {
@@ -42,14 +33,5 @@ export class LoginService {
       });
 
     });
-
-  }
-
-  getUsers() {
-    return this.http.get(this.api_url + '/users/', this.getHttpOptions());
-  }
-
-  postUser(user) {
-    return this.http.post(this.api_url + '/users/', user ,this.getHttpOptions());
   }
 }

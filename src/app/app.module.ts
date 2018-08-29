@@ -6,6 +6,7 @@ import { LoginComponent } from './login/login.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { LoginService } from './login/login.service';
+import { UsersService } from './users/users.service';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { UsersComponent } from './users/users.component';
@@ -31,7 +32,7 @@ const routes: Routes = [
       { enableTracing: false } // <-- tareas de debug
     )
   ],
-  providers: [LoginService],
+  providers: [LoginService, UsersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

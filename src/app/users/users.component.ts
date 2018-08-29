@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from '../login/login.service';
+import { UsersService } from './users.service';
 
 @Component({
   selector: 'app-users',
@@ -21,7 +22,7 @@ export class UsersComponent implements OnInit {
   };
   
   
-  constructor(private router: Router, private loginService: LoginService) {
+  constructor(private router: Router, private loginService: LoginService, private usersService: UsersService) {
     if (!loginService.is_login) {
       router.navigate(['']);
     }
@@ -32,7 +33,7 @@ export class UsersComponent implements OnInit {
   }
   
   getUsers() {
-    this.loginService.getUsers().subscribe((data: any) => {
+    this.usersService.getUsers().subscribe((data: any) => {
       this.users = data;
     });
   }
@@ -48,7 +49,7 @@ export class UsersComponent implements OnInit {
   }
   
   saveUser() {
-    this.loginService.postUser(this.User).subscribe((data: any) => {
+    this.usersService.postUser(this.User).subscribe((data: any) => {
       this.getUsers();
       this.is_add = false;
     });
