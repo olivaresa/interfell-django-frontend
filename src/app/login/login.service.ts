@@ -10,13 +10,22 @@ export class LoginService {
   private api_url: string = 'http://localhost:8000';
   public is_login: boolean = false;
   private token: string;
-  
-  
+
+
   constructor(private http: HttpClient) {
-    
+
   }
 
-  getAuth(username, password){
+  private getHttpOptions() {
+    return {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'JWT ' + this.token
+      })
+    };
+  }
+  
+  getAuth(username, password) {
     return new Observable((observer) => {
       this.http.post(this.api_url + '/api-token-auth/', {
         username: username,
@@ -33,7 +42,14 @@ export class LoginService {
       });
 
     });
-  
+
   }
 
+  getUsers() {
+    return this.http.get(this.api_url + '/users/', this.getHttpOptions());
+  }
+
+  postUser(user) {
+    return this.http.post(this.api_url + '/users/', user ,this.getHttpOptions());
+  }
 }

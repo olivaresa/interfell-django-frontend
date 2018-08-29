@@ -1,3 +1,27 @@
-<p>
-  users works!
-</p>
+<h3>Users</h3>
+
+<div *ngIf="!is_add">
+  <input type="button" name="" value="Add new user" (click)="addUser()">
+  <ul>
+    <li *ngFor="let user of users">
+      {{ user.first_name }} {{ user.last_name }}
+    </li>
+  </ul>
+</div>
+
+<div *ngIf="is_add">
+  <label for="first_name">First name</label>
+  <input [(ngModel)]="User.first_name" type="text" name="first_name" value="">
+  <label for="last_name">Last name</label>
+  <input [(ngModel)]="User.last_name" type="text" name="last_name" value="">
+  <label for="academic_level">Academic level</label>
+  <input [(ngModel)]="User.academic_level" type="text" name="academic_level" value="">
+  <label for="address">Address</label>
+  <input [(ngModel)]="User.address" type="text" name="address" value="">
+  <label for="city">City</label>
+  <input [(ngModel)]="User.city" type="text" name="city" value="">
+  <label for="country">Country</label>
+  <input [(ngModel)]="User.country" type="text" name="country" value="">
+  <input type="button" name="" value="save" (click)="saveUser()">
+  <input type="button" name="" value="cancel" (click)="cancel()">
+</div>
