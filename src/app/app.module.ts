@@ -8,12 +8,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginService } from './login/login.service';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
-import { App } from './app.users/app.users.component';
 import { UsersComponent } from './users/users.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  // { path: 'c2', component: C2Component },
+  { path: 'users', component: UsersComponent },
   { path: '',   redirectTo: '/login', pathMatch: 'full' },
 ];
 
@@ -21,7 +20,6 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     LoginComponent,
-    App.UsersComponent,
     UsersComponent
   ],
   imports: [
@@ -30,7 +28,7 @@ const routes: Routes = [
     FormsModule,
     RouterModule.forRoot(
       routes,
-      { enableTracing: true } // <-- tareas de debug
+      { enableTracing: false } // <-- tareas de debug
     )
   ],
   providers: [LoginService],
