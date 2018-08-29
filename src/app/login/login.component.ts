@@ -18,13 +18,12 @@ export class LoginComponent implements OnInit {
   
   login() { 
     
-    this.loginService.getAuth(this.username, this.password).subscribe(res => {
-      
-      if (res.token) {
-        localStorage.setItem('token': res.token);
-      }
-      
-      console.log(res.token);
+    console.log('*************');
+    console.log(localStorage);
+    console.log('*************');
+    
+    this.loginService.getAuth(this.username, this.password).subscribe(data => {
+      // console.log(data.token);
     }, err => {
       console.log(err);
     });

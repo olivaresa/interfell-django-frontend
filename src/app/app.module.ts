@@ -7,6 +7,13 @@ import { LoginComponent } from './login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginService } from './login/login.service';
 import { FormsModule } from '@angular/forms';
+import { RouterModule, Routes } from '@angular/router';
+
+const routes: Routes = [
+  { path: 'login', component: LoginComponent },
+  // { path: 'c2', component: C2Component },
+  { path: '',   redirectTo: '/login', pathMatch: 'full' },
+];
 
 @NgModule({
   declarations: [
@@ -16,7 +23,11 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    RouterModule.forRoot(
+      routes,
+      { enableTracing: true } // <-- tareas de debug
+    )
   ],
   providers: [LoginService],
   bootstrap: [AppComponent]
